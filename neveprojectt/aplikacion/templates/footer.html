@@ -1,0 +1,181 @@
+{% load static %}
+ <footer class="footer" id="contact">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+
+                <!-- BRAND INFORMATION -->
+                <div class="col-lg-4">
+
+                    <a
+                        class="navbar-brand d-flex align-items-center"
+                        href="{% url 'home' %}"
+                        aria-label="Néve Aesthetic Studio Home">
+
+                        <img
+                            src="{% static 'image/lotus-flower.png' %}"
+                            alt=""
+                            aria-hidden="true">
+
+                        <span class="brand-text">
+                            <span class="brand-name">Néve</span>
+                            <span class="brand-subtitle">AESTHETIC STUDIO</span>
+                        </span>
+
+                    </a>
+
+                    <p class="footer-tagline">
+                        Beauty Is My Business.
+                    </p>
+
+                    <p>
+                        A space dedicated to beauty, self-care
+                        and confidence. Discover your glow with
+                        Néve Aesthetic Studio.
+                    </p>
+
+                </div>
+
+
+                <!-- CONTACT INFORMATION -->
+                <div class="col-md-6 col-lg-4">
+
+                    <h3>Contact Us</h3>
+
+                    <p>
+                        <i
+                            class="fa-solid fa-location-dot"
+                            aria-hidden="true">
+                        </i>
+
+                        Sheshi Wilson, Tiranë, Albania
+                    </p>
+
+                    <p>
+                        <i
+                            class="fa-solid fa-envelope"
+                            aria-hidden="true">
+                        </i>
+
+                        <a href="mailto:hello@nevebeauty.al">
+                            hello@nevebeauty.al
+                        </a>
+                    </p>
+
+                    <p>
+                        <i
+                            class="fa-solid fa-phone"
+                            aria-hidden="true">
+                        </i>
+
+                        <a href="tel:+355690000000">
+                            +355 69 000 0000
+                        </a>
+                    </p>
+
+                    <p>
+                        <i
+                            class="fa-regular fa-clock"
+                            aria-hidden="true">
+                        </i>
+
+                        Monday – Sunday: 9:00 AM – 9:00 PM
+                    </p>
+
+                </div>
+
+
+                <!-- SOCIAL MEDIA AND QUICK LINKS -->
+                <div class="col-md-6 col-lg-4">
+
+                    <h3>Follow Us</h3>
+
+                    <div class="social-icons">
+
+                        <a
+                            href="https://www.instagram.com/"
+                            aria-label="Instagram"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            <i
+                                class="fa-brands fa-instagram"
+                                aria-hidden="true">
+                            </i>
+
+                        </a>
+
+                        <a
+                            href="https://www.facebook.com/"
+                            aria-label="Facebook"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            <i
+                                class="fa-brands fa-facebook-f"
+                                aria-hidden="true">
+                            </i>
+
+                        </a>
+
+                        <a
+                            href="https://www.tiktok.com/"
+                            aria-label="TikTok"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            <i
+                                class="fa-brands fa-tiktok"
+                                aria-hidden="true">
+                            </i>
+
+                        </a>
+
+                        <a
+                            href="https://wa.me/355690000000"
+                            aria-label="WhatsApp"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            <i
+                                class="fa-brands fa-whatsapp"
+                                aria-hidden="true">
+                            </i>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- QUICK LINKS -->
+                    <h3 class="footer-links-title">
+                        Quick Links
+                    </h3>
+
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'services' %}">Services</a>
+                    <a href="{% url 'gallery' %}">Gallery</a>
+                    <a href="{% url 'products' %}">Products</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'home' %}#reviews">Reviews</a>
+                    <a href="{% url 'contact' %}">Contact</a>
+
+                </div>
+
+            </div>
+
+
+            <!-- COPYRIGHT -->
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2026 Néve Aesthetic Studio.
+                    All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+    </footer>

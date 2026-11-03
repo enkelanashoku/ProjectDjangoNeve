@@ -1,0 +1,467 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="services-page-header">
+    <div class="container text-center">
+
+        <p class="section-label">YOUR BEAUTY, OUR PASSION</p>
+
+        <h1>Our Services</h1>
+
+        <p>Discover your favourite treatments and make time for yourself.</p>
+
+    </div>
+</section>
+
+
+<!-- REGULAR SERVICES -->
+
+<!-- REGULAR SERVICES -->
+<section class="services-section section-padding" id="all-services">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            {% for service in services %}
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card h-100">
+
+                    {% if service.service_image %}
+
+                    <img
+                        src="{{ service.service_image.url }}"
+                        alt="{{ service.service_name }}"
+                    >
+
+                    {% endif %}
+
+                    <div class="service-info">
+
+                        <h3>{{ service.service_name }}</h3>
+
+                        <p>
+                            {{ service.service_description }}
+                        </p>
+
+                        {% if service.service_price %}
+                        <span class="service-price">
+                            From €{{ service.service_price }}
+                        </span>
+                        {% endif %}
+
+                        <a
+                            class="service-link"
+                            href="{% url 'contact' %}?service={{ service.service_name|urlencode }}"
+                        >
+                            Enquire about this service
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12 text-center py-5">
+
+                <h3>No services available yet.</h3>
+
+                <p>Our beauty treatments will be available soon.</p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GLOW O'CLOCK RITUAL -->
+<section class="ritual-section section-padding" id="glow-ritual">
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <p class="section-label">OUR SIGNATURE EXPERIENCE</p>
+
+                <h2>THE GLOW O’CLOCK RITUAL</h2>
+
+                <p>
+                    More than a treatment, this is your time to pause.
+                    Enjoy a personalised self-care experience designed
+                    around relaxation, body care and a radiant glow.
+                </p>
+
+                <p class="ritual-duration">
+                    Choose the complete ritual or create your own experience.
+                </p>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <img src="{% static 'image/foto33.jpeg' %}"
+                     alt="The Glow O'Clock Ritual"
+                     class="ritual-image">
+
+            </div>
+
+        </div>
+
+
+        <!-- CHOOSE YOUR EXPERIENCE -->
+        <div class="mt-5">
+
+            <div class="section-heading text-center">
+
+                <p class="section-label">YOUR TIME, YOUR WAY</p>
+
+                <h2>Choose Your Glow</h2>
+
+                <p>
+                    Enjoy the complete experience or select the treatments
+                    that suit you best. Your Warm Welcome is always included.
+                </p>
+
+            </div>
+
+
+            <!-- COMPLETE PACKAGE -->
+            <div class="ritual-step mb-4">
+
+                <div class="form-check">
+
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="completeRitual">
+
+                    <label class="form-check-label" for="completeRitual">
+                        <h3>The Complete Glow O’Clock Ritual</h3>
+                    </label>
+
+                </div>
+
+                <p>
+                    The full experience, including all four treatments
+                    and your complimentary Warm Welcome.
+                </p>
+
+                <p class="ritual-duration">
+                    Approximately 90–120 minutes
+                </p>
+
+            </div>
+
+
+            <!-- ALWAYS INCLUDED -->
+            <div class="ritual-step mb-4">
+
+                <p class="section-label">ALWAYS INCLUDED</p>
+
+                <h3>
+                    <i class="fa-solid fa-heart"></i>
+                    Warm Welcome
+                </h3>
+
+                <p>
+                    Begin with a warm towel, a soothing scent, a refreshing
+                    drink and a short consultation to make your experience
+                    feel personal from the very first moment.
+                </p>
+
+                <p><strong>Included with every selection.</strong></p>
+
+            </div>
+
+
+            <!-- INDIVIDUAL TREATMENTS -->
+            <div class="section-heading text-center mt-5">
+
+                <h2>Choose Your Own Treatments</h2>
+
+                <p>Select one or more treatments to personalise your ritual.</p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <!-- BODY RESET -->
+                <div class="col-md-6 col-lg-6">
+                    <div class="ritual-step h-100">
+
+                        <div class="form-check">
+
+                            <input class="form-check-input ritual-option"
+                                   type="checkbox"
+                                   id="bodyReset"
+                                   value="Body Reset"
+                                   data-duration="25">
+
+                            <label class="form-check-label" for="bodyReset">
+                                <h3>Body Reset</h3>
+                            </label>
+
+                        </div>
+
+                        <p>
+                            Gentle body exfoliation followed by nourishing
+                            hydration to leave your skin feeling soft,
+                            smooth and refreshed.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- LEG & FOOT -->
+                <div class="col-md-6 col-lg-6">
+                    <div class="ritual-step h-100">
+
+                        <div class="form-check">
+
+                            <input class="form-check-input ritual-option"
+                                   type="checkbox"
+                                   id="legFoot"
+                                   value="Leg & Foot Ritual"
+                                   data-duration="20">
+
+                            <label class="form-check-label" for="legFoot">
+                                <h3>Leg &amp; Foot Ritual</h3>
+                            </label>
+
+                        </div>
+
+                        <p>
+                            A relaxing foot soak, gentle exfoliation
+                            and a soothing foot massage for a moment
+                            of comfort and relaxation.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- FACE GLOW -->
+                <div class="col-md-6 col-lg-6">
+                    <div class="ritual-step h-100">
+
+                        <div class="form-check">
+
+                            <input class="form-check-input ritual-option"
+                                   type="checkbox"
+                                   id="faceGlow"
+                                   value="Face Glow"
+                                   data-duration="30">
+
+                            <label class="form-check-label" for="faceGlow">
+                                <h3>Face Glow</h3>
+                            </label>
+
+                        </div>
+
+                        <p>
+                            A refreshing facial experience with cleansing,
+                            suitable exfoliation, a mask and hydration
+                            to leave your skin feeling comfortable and radiant.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- FINISHING TOUCH -->
+                <div class="col-md-6 col-lg-6">
+                    <div class="ritual-step h-100">
+
+                        <div class="form-check">
+
+                            <input class="form-check-input ritual-option"
+                                   type="checkbox"
+                                   id="finishingTouch"
+                                   value="Finishing Touch"
+                                   data-duration="15">
+
+                            <label class="form-check-label" for="finishingTouch">
+                                <h3>Finishing Touch</h3>
+                            </label>
+
+                        </div>
+
+                        <p>
+                            Complete your experience with a calming
+                            finishing touch, such as a gentle scalp massage
+                            or aromatherapy, depending on your preferences
+                            and available time.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- SELECTION SUMMARY -->
+            <div class="ritual-step mt-5"
+                 id="selectionSummary"
+                 aria-live="polite">
+
+                <p class="section-label">YOUR PERSONAL EXPERIENCE</p>
+
+                <h3>Your Selection</h3>
+
+                <p id="selectedTreatments">
+                    Warm Welcome — included with every selection.
+                </p>
+
+                <p id="selectedDuration" class="ritual-duration">
+                    Choose your treatments to see your estimated duration.
+                </p>
+
+                <p>
+                    Final duration and pricing will be confirmed by Néve
+                    when your booking request is received.
+                </p>
+
+                <button type="button"
+                        class="btn btn-main"
+                        id="bookSelection">
+
+                    Book Your Glow
+
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- BOOKING CTA -->
+<section class="cta-section" id="booking">
+    <div class="container text-center">
+
+        <p class="section-label">YOUR MOMENT STARTS HERE</p>
+
+        <h2>Make Time for Yourself</h2>
+
+        <p>Your moment of beauty and relaxation is waiting for you.</p>
+
+        <a href="mailto:hello@nevebeauty.al?subject=Booking%20Enquiry"
+           class="btn btn-light-custom">
+
+            Contact Néve
+
+        </a>
+
+    </div>
+</section>
+
+
+<!-- RITUAL INTERACTION -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const completeRitual = document.getElementById("completeRitual");
+
+    const ritualOptions = document.querySelectorAll(".ritual-option");
+
+    const selectedTreatments = document.getElementById("selectedTreatments");
+
+    const selectedDuration = document.getElementById("selectedDuration");
+
+    const bookSelection = document.getElementById("bookSelection");
+
+
+    // Update the ritual summary
+    function updateRitual() {
+
+        const selected = Array.from(ritualOptions)
+            .filter(option => option.checked);
+
+        // Keep the complete package in sync with individual treatments
+        completeRitual.checked = selected.length === ritualOptions.length;
+
+        if (completeRitual.checked) {
+
+            selectedTreatments.textContent =
+                "Complete Glow O’Clock Ritual + Warm Welcome.";
+
+            selectedDuration.textContent =
+                "Estimated duration: 90–120 minutes.";
+
+            return;
+        }
+
+        if (selected.length === 0) {
+
+            selectedTreatments.textContent =
+                "Warm Welcome — included with every selection.";
+
+            selectedDuration.textContent =
+                "Choose your treatments to see your estimated duration.";
+
+            return;
+        }
+
+        const treatmentNames = selected.map(option => option.value);
+
+        const treatmentMinutes = selected.reduce(function (total, option) {
+            return total + Number(option.dataset.duration);
+        }, 0);
+
+        // Allow approximately 10 minutes for the Warm Welcome
+        const totalMinutes = treatmentMinutes + 10;
+
+        selectedTreatments.textContent =
+            "Warm Welcome + " + treatmentNames.join(", ") + ".";
+
+        selectedDuration.textContent =
+            "Estimated duration: approximately " + totalMinutes + " minutes.";
+    }
+
+
+    // Selecting the complete ritual selects every treatment
+    completeRitual.addEventListener("change", function () {
+
+        ritualOptions.forEach(function (option) {
+            option.checked = completeRitual.checked;
+        });
+
+        updateRitual();
+    });
+
+
+    // Individual treatment selection
+    ritualOptions.forEach(function (option) {
+
+        option.addEventListener("change", updateRitual);
+
+    });
+
+
+    // Send the user to the booking form
+    bookSelection.addEventListener("click", function () {
+        window.location.href = "{% url 'appointment' %}";
+    });
+
+
+    updateRitual();
+
+});
+</script>
+
+{% endblock %}

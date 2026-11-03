@@ -1,0 +1,463 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- ==========================================
+     2. HERO
+     Elegant, premium and balanced hero section
+     ========================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-subtitle">
+            YOUR BEAUTY, YOUR MOMENT
+        </p>
+
+        <h1>
+    Beauty Is<br>
+    <span class="hero-highlight">My Business.</span>
+</h1>
+
+        <p class="hero-description">
+            Discover the beauty of feeling confident,
+            radiant and completely yourself.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'services' %}" class="btn btn-main">
+                Discover Our Services
+                <span aria-hidden="true">→</span>
+            </a>
+            <a href="{% url 'appointment' %}" class="btn btn-outline-custom">
+                Book an Appointment
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- HERO IMAGE -->
+    <div class="hero-image">
+
+        <img
+            src="{% static 'image/heero1.jpeg' %}"
+            alt="Beauty and self-care at Néve Aesthetic Studio"
+            fetchpriority="high"
+            decoding="async">
+
+    </div>
+
+</section>
+
+
+    <!-- ==========================================
+         3. ABOUT
+         Brand story and studio philosophy
+         ========================================== -->
+
+    <section
+        class="about-section section-padding"
+        id="about">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <!-- ABOUT IMAGE -->
+                <div class="col-lg-6">
+
+                    <img
+                        src="{% static 'image/foto34.jpeg' %}"
+                        alt="A relaxing beauty ritual at Néve Aesthetic Studio"
+                        class="about-image"
+                        loading="lazy">
+
+                </div>
+
+                <!-- ABOUT CONTENT -->
+                <div class="col-lg-6">
+
+                    <p class="section-label">
+                        WELCOME TO NÉVE
+                    </p>
+
+                    <h2>
+                        A Little Time for Yourself
+                    </h2>
+
+                    <p>
+                        At Néve Aesthetic Studio, beauty is more than
+                        a look. It is a moment to pause, relax and
+                        reconnect with yourself.
+                    </p>
+
+                    <p>
+                        From the little details to the moments of
+                        complete relaxation, every experience is
+                        designed to help you feel beautiful,
+                        confident and cared for.
+                    </p>
+
+                    <a href="{% url 'about' %}" class="btn btn-main">Our Studio Story</a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         4. SERVICES
+         Four main categories and transparent pricing
+         ========================================== -->
+
+    <section
+        class="services-section section-padding"
+        id="services">
+
+        <div class="container">
+
+            <!-- SECTION INTRODUCTION -->
+            <div class="section-heading text-center">
+
+                <p class="section-label">
+                    OUR EXPERTISE
+                </p>
+
+                <h2>
+                    Beauty, Tailored to You
+                </h2>
+
+                <p>
+                    Thoughtful treatments and little details
+                    that make you feel extraordinary.
+                </p>
+
+            </div>
+
+
+            <!-- SERVICE CARDS -->
+            <div class="row g-4">
+
+                <!-- LASHES & BROWS -->
+                 {% for service in services %}
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="service-card h-100">
+
+                        <img
+                            src="{{ service.service_image.url }}"
+                            alt="Lashes and brows treatments"
+                            loading="lazy">
+
+                        <div class="service-info">
+
+                            <h3>{{ service.service_name }}</h3>
+
+                            <p>
+                                {{ service.service_description }}
+                            </p>
+
+                            <span>From €{{ service.service_price }}</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+{% endfor %}
+              
+            </div>
+
+
+            <!-- ONE SERVICES CTA -->
+            <div class="text-center mt-5">
+
+                <a href="{% url 'services' %}" class="btn btn-main">
+                    View All Services
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         5. SIGNATURE RITUAL
+         Néve's distinctive self-care experience
+         ========================================== -->
+
+    <section class="ritual-section section-padding">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <!-- RITUAL DESCRIPTION -->
+                <div class="col-lg-6">
+
+                    <p class="section-label">
+                        OUR SIGNATURE EXPERIENCE
+                    </p>
+
+                    <h2>
+                        THE GLOW O’CLOCK RITUAL
+                    </h2>
+
+                    <p>
+                        Your time to slow down, unwind and glow.
+                        Discover a thoughtful self-care experience
+                        combining body care, a relaxing leg and foot
+                        ritual, and a refreshing facial treatment.
+                    </p>
+
+                    <p>
+                        Enjoy a personalised experience shaped
+                        around your needs and the moments of
+                        relaxation you value most.
+                    </p>
+
+                    <p class="ritual-duration">
+                        A personal experience, made for you.
+                    </p>
+
+                    <!-- RITUAL DETAILS CTA -->
+                    <a
+                        href="{% url 'services' %}#glow-ritual"
+                        class="btn btn-main">
+
+                        Discover the Ritual
+
+                    </a>
+
+                </div>
+
+
+                <!-- RITUAL IMAGE -->
+                <div class="col-lg-6">
+
+                    <img
+                        src="{% static 'image/fotoo33.jpeg' %}"
+                        alt="The Glow O'Clock Ritual at Néve Aesthetic Studio"
+                        class="ritual-image"
+                        loading="lazy">
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         6. CALL TO ACTION
+         Direct contact action
+         ========================================== -->
+
+    <section class="cta-section">
+
+        <div class="container text-center">
+
+            <p class="section-label">
+                YOUR MOMENT STARTS HERE
+            </p>
+
+            <h2>
+                Make Time for Yourself
+            </h2>
+
+            <p>
+                You deserve a moment that is entirely yours.
+                Let us help you find the right experience.
+            </p>
+
+            <!-- DIRECT CALL ACTION -->
+            <a href="{% url 'appointment' %}" class="btn btn-light-custom">Book Your Glow</a>
+
+        </div>
+    </section>
+
+
+<section class="products-section section-padding" id="products">
+    <div class="container">
+        <div class="beauty-edit-heading text-center">
+            <p class="section-label">THE NÉVE EDIT</p>
+            <h2>Everyday <span>Beauty Essentials</span></h2>
+            <p>Explore a few of our latest picks for your self-care routine.</p>
+        </div>
+        <div class="row g-4 beauty-edit-grid">
+            {% for product in products %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="beauty-product">
+                    <div class="beauty-product-image">
+                        {% if product.image_path %}<img src="{% static product.image_path %}" alt="{{ product.product_name }}" loading="lazy">{% endif %}
+                    </div>
+                    <div class="beauty-product-info">
+                        <p class="product-category">{{ product.category }}</p>
+                        <h3>{{ product.product_name }}</h3>
+                        <p>{{ product.description }}</p>
+                        <span class="product-price">€{{ product.price }}</span>
+                    </div>
+                </article>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center"><p>Our product edit is coming soon.</p></div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'products' %}" class="btn btn-main">Explore All Products</a>
+        </div>
+        <div class="beauty-studio-note">
+            <span class="beauty-studio-note-icon">
+                <i class="fa-regular fa-heart"></i>
+            </span>
+
+            <div>
+                <h4>Personal Recommendations</h4>
+                <p>
+                    Visit us in the studio for personalised product
+                    recommendations based on your needs.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- ==========================================
+         8. CLIENT REVIEWS
+         Social proof and customer confidence
+         ========================================== -->
+
+    <section
+        class="testimonials section-padding"
+        id="reviews">
+
+        <div class="container">
+
+            <!-- SECTION INTRODUCTION -->
+            <div class="section-heading text-center">
+
+                <p class="section-label">
+                    KIND WORDS
+                </p>
+
+                <h2>
+                    What Our Clients Say
+                </h2>
+
+            </div>
+
+
+            <!-- REVIEWS CAROUSEL -->
+            <div
+                id="reviewsCarousel"
+                class="carousel slide"
+                data-bs-ride="carousel"
+                data-bs-interval="5000">
+
+                <div class="carousel-inner">
+
+
+                    <!-- REVIEW 1 -->
+                    <div class="carousel-item active">
+
+                        <div class="review-card text-center mx-auto">
+
+                            <div
+                                class="review-stars"
+                                role="img"
+                                aria-label="5 out of 5 stars">
+
+                                ★★★★★
+
+                            </div>
+
+                            <blockquote>
+                                "A beautiful and relaxing experience!"
+                            </blockquote>
+
+                            <h5>Encia</h5>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REVIEW 2 -->
+                    <div class="carousel-item">
+
+                        <div class="review-card text-center mx-auto">
+
+                            <div
+                                class="review-stars"
+                                role="img"
+                                aria-label="5 out of 5 stars">
+
+                                ★★★★★
+
+                            </div>
+
+                            <blockquote>
+                                "Amazing service. I'll definitely come back!"
+                            </blockquote>
+
+                            <h5>Enki</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PREVIOUS REVIEW -->
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#reviewsCarousel"
+                    data-bs-slide="prev"
+                    aria-label="Previous review">
+
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true">
+                    </span>
+
+                </button>
+
+
+                <!-- NEXT REVIEW -->
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#reviewsCarousel"
+                    data-bs-slide="next"
+                    aria-label="Next review">
+
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true">
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    {% endblock %}
+
+   

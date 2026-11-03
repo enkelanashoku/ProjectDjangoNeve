@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<section class="gallery-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 gallery-hero-copy">
+                <p class="section-label">A LITTLE INSPIRATION</p>
+                <h1>Beauty, <em>made personal.</em></h1>
+                <p>Explore the looks, details and moments created with care at Néve Aesthetic Studio.</p>
+                <a href="{% url 'appointment' %}" class="btn btn-main">Create Your Moment <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="col-lg-6">
+                <div class="gallery-hero-image">
+                    <img src="{% static 'image/foto34.jpeg' %}" alt="A calm beauty moment at Néve Aesthetic Studio" fetchpriority="high">
+                    <span class="gallery-hero-stamp">THE NÉVE<br>EXPERIENCE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section section-padding">
+    <div class="container">
+        <div class="gallery-intro text-center">
+            <p class="section-label">OUR WORK, OUR WORLD</p>
+            <h2>Beauty in Every Detail</h2>
+            <p>Each visit is personal. Here are a few moments from our studio.</p>
+        </div>
+
+        <div class="gallery-filters" role="group" aria-label="Filter gallery by category">
+            <button class="gallery-filter is-active" type="button" data-filter="all" aria-pressed="true">All moments</button>
+            {% for value, label in gallery_categories %}
+            <button class="gallery-filter" type="button" data-filter="{{ value }}" aria-pressed="false">{{ label }}</button>
+            {% endfor %}
+        </div>
+
+        <div class="row g-4 gallery-grid">
+            {% for post in gallery_posts %}
+            <div class="col-sm-6 col-lg-4 gallery-item" data-category="{{ post.category }}">
+                <button class="gallery-card{% if post.is_featured %} is-featured{% endif %}" type="button"
+                        data-bs-toggle="modal" data-bs-target="#galleryLightbox"
+                        data-title="{{ post.title }}" data-caption="{{ post.caption }}"
+                        {% if post.image %}data-image="{{ post.image.url }}"{% elif post.image_path %}data-image="{% static post.image_path %}"{% endif %}
+                        aria-label="View {{ post.title }}">
+                    <span class="gallery-card-image">
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" loading="lazy">
+                        {% elif post.image_path %}
+                        <img src="{% static post.image_path %}" alt="{{ post.title }}" loading="lazy">
+                        {% endif %}
+                    </span>
+                    <span class="gallery-card-shade"></span>
+                    <span class="gallery-card-copy">
+                        <span class="gallery-card-category">{{ post.get_category_display }}</span>
+                        <span class="gallery-card-title">{{ post.title }}</span>
+                        <span class="gallery-card-open">View moment <span aria-hidden="true">↗</span></span>
+                    </span>
+                </button>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="gallery-empty text-center">
+                    <p class="section-label">COMING SOON</p>
+                    <h3>Our next beautiful moments are on their way.</h3>
+                    <p>Visit us again soon to see the latest work from the studio.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="gallery-booking text-center">
+            <p class="section-label">YOUR TURN TO GLOW</p>
+            <h2>Let’s create your next favorite look.</h2>
+            <a href="{% url 'appointment' %}" class="btn btn-main">Book Your Glow <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade gallery-lightbox" id="galleryLightbox" tabindex="-1" aria-labelledby="galleryLightboxTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <button type="button" class="gallery-lightbox-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            <img class="gallery-lightbox-image" src="" alt="">
+            <div class="gallery-lightbox-caption">
+                <p class="section-label" id="galleryLightboxCategory">THE NÉVE EXPERIENCE</p>
+                <h2 id="galleryLightboxTitle"></h2>
+                <p id="galleryLightboxText"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filters = document.querySelectorAll('.gallery-filter');
+    const items = document.querySelectorAll('.gallery-item');
+
+    filters.forEach(function (filter) {
+        filter.addEventListener('click', function () {
+            const selected = filter.dataset.filter;
+            filters.forEach(function (button) {
+                const active = button === filter;
+                button.classList.toggle('is-active', active);
+                button.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+            items.forEach(function (item) {
+                item.hidden = selected !== 'all' && item.dataset.category !== selected;
+            });
+        });
+    });
+
+    const lightbox = document.getElementById('galleryLightbox');
+    lightbox.addEventListener('show.bs.modal', function (event) {
+        const card = event.relatedTarget;
+        const image = lightbox.querySelector('.gallery-lightbox-image');
+        image.src = card.dataset.image;
+        image.alt = card.dataset.title;
+        lightbox.querySelector('#galleryLightboxTitle').textContent = card.dataset.title;
+        lightbox.querySelector('#galleryLightboxText').textContent = card.dataset.caption;
+        lightbox.querySelector('#galleryLightboxCategory').textContent = card.querySelector('.gallery-card-category').textContent;
+    });
+    lightbox.addEventListener('hidden.bs.modal', function () {
+        lightbox.querySelector('.gallery-lightbox-image').src = '';
+    });
+});
+</script>
+
+{% endblock %}

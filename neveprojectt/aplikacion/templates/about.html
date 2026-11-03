@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ABOUT HERO -->
+<section class="about-hero py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+                <p class="about-label">WELCOME TO NÉVE</p>
+
+                <h1 class="about-title">
+                    {{ about.welcome_title }}
+                </h1>
+
+                <p class="about-text">
+                    {{ about.welcome_description }}
+                </p>
+            </div>
+
+            <div class="col-lg-6">
+                {% if about.welcome_image %}
+                    <img src="{{ about.welcome_image.url }}"
+                         alt="Néve Aesthetic Studio"
+                         class="img-fluid about-image">
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- OUR PHILOSOPHY -->
+<section class="about-philosophy py-5">
+    <div class="container text-center">
+
+        <p class="about-label">OUR PHILOSOPHY</p>
+
+        <h2 class="about-subtitle">
+            {{ about.philosophy_title }}
+        </h2>
+
+        <p class="about-text mx-auto">
+            {{ about.philosophy_description }}
+        </p>
+
+    </div>
+</section>
+
+
+<!-- THE NÉVE EXPERIENCE -->
+<section class="about-experience py-5">
+    <div class="container text-center">
+
+        <p class="about-label">THE NÉVE EXPERIENCE</p>
+
+        <h2 class="about-subtitle">
+            {{ about.experience_title }}
+        </h2>
+
+        <p class="about-text mx-auto">
+            {{ about.experience_description }}
+        </p>
+
+        <a href="{% url 'appointment' %}" class="btn about-btn mt-3">
+            Book Your Moment
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}

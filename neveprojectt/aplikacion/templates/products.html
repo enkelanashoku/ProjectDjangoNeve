@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<section class="catalog-header">
+    <div class="container text-center">
+        <p class="section-label">THE NÉVE EDIT</p>
+        <h1>Beauty Essentials</h1>
+        <p>Thoughtful little additions to your everyday self-care ritual.</p>
+    </div>
+</section>
+
+<section class="products-section section-padding">
+    <div class="container">
+        <div class="row g-4">
+            {% for product in products %}
+            <div class="col-sm-6 col-lg-4 col-xl-3">
+                <article class="catalog-product h-100">
+                    <div class="catalog-product-image">
+                        {% if product.image_path %}
+                        <img src="{% static product.image_path %}" alt="{{ product.product_name }}" loading="lazy">
+                        {% endif %}
+                    </div>
+                    <div class="catalog-product-info">
+                        <p class="product-category">{{ product.category }}</p>
+                        <h2>{{ product.product_name }}</h2>
+                        <p>{{ product.description }}</p>
+                        <div class="catalog-product-bottom">
+                            <span class="product-price">€{{ product.price }}</span>
+                            <a class="btn btn-product" href="{% url 'contact' %}?product={{ product.product_name|urlencode }}">
+                                Ask about this product <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <h2>Our product edit is coming soon.</h2>
+                <a class="btn btn-main mt-3" href="{% url 'contact' %}">Contact the Studio</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
