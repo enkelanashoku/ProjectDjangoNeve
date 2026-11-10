@@ -1,96 +1,97 @@
+
 {% load static %}
 <nav class="navbar navbar-expand-lg">
-        <div class="container">
+    <div class="container">
 
-            <!-- BRAND -->
-            <a
-                class="navbar-brand d-flex align-items-center"
-                href="{% url 'home' %}"
-                aria-label="Néve Aesthetic Studio Home">
+        <!-- BRAND -->
+        <a
+            class="navbar-brand d-flex align-items-center"
+            href="{% url 'home' %}"
+            aria-label="Néve Aesthetic Studio Home">
 
-                <img
-                    src="{% static 'image/lotus-flower.png' %}"
-                    alt=""
-                    aria-hidden="true">
+            <img
+                src="{% static 'image/lotus-flower.png' %}"
+                alt=""
+                aria-hidden="true">
 
-                <span class="brand-text">
-                    <span class="brand-name">Néve</span>
-                    <span class="brand-subtitle">AESTHETIC STUDIO</span>
-                </span>
+            <span class="brand-text">
+                <span class="brand-name">Néve</span>
+                <span class="brand-subtitle">AESTHETIC STUDIO</span>
+            </span>
 
-            </a>
+        </a>
 
-            <!-- MOBILE MENU BUTTON -->
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarContent"
-                aria-controls="navbarContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
+        <!-- MOBILE MENU BUTTON -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
 
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
 
-            </button>
+        </button>
 
-            <!-- NAVIGATION LINKS -->
-            <div class="collapse navbar-collapse" id="navbarContent">
+        <!-- NAVIGATION LINKS -->
+        <div class="collapse navbar-collapse" id="navbarContent">
 
-                <ul class="navbar-nav ms-auto align-items-lg-center">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
 
-                    <li class="nav-item">
-                        <a
-                            class="nav-link active"
-                            aria-current="page"
-                            href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>
-                            Home
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link active"
+                        aria-current="page"
+                        href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>
+                        Home
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'services' %}">
-                            Services
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'services' %}">
+                        Services
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'gallery' %}">
-                            Gallery
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gallery' %}">
+                        Gallery
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'products' %}">
-                            Products
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products' %}">
+                        Products
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">
-                            About
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        About
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}#reviews">
-                            Reviews
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}#reviews">
+                        Reviews
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
 
-                    <!-- PRIMARY NAVIGATION CTA -->
-                    <li class="nav-item ms-lg-3">
-                        <a class="btn btn-book" href="{% url 'appointment' %}">
-                            Book Your Glow
-                        </a>
-                    </li>
+                <!-- PRIMARY NAVIGATION CTA -->
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-book" href="{% url 'appointment' %}#booking-form">
+                        Book Your Glow
+                    </a>
+                </li>
 
-                </ul>
+            </ul>
 
-            </div>
         </div>
-    </nav>
+    </div>
+</nav>

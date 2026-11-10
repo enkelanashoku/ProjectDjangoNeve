@@ -27,9 +27,9 @@
                         <p>{{ product.description }}</p>
                         <div class="catalog-product-bottom">
                             <span class="product-price">€{{ product.price }}</span>
-                            <a class="btn btn-product" href="{% url 'contact' %}?product={{ product.product_name|urlencode }}">
-                                Ask about this product <span aria-hidden="true">→</span>
-                            </a>
+                            <a class="btn btn-product" href="{% url 'product_detail' product.product_slug %}">
+    VIEW PRODUCT <span aria-hidden="true">→</span>
+</a>
                         </div>
                     </div>
                 </article>

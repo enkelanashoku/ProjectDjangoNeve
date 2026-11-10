@@ -21,6 +21,27 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('product_name', 'product_slug', 'description')
     prepopulated_fields = {'product_slug': ('product_name',)}
 
+    fieldsets = (
+        ('Product Information', {
+            'fields': (
+                'product_slug',
+                'product_name',
+                'category',
+                'description',
+                'price',
+                'image_path',
+            )
+        }),
+        ('Additional Details', {
+            'fields': (
+                'usage_instructions',
+                'benefits',
+            )
+        }),
+        ('Settings', {
+            'fields': ('is_active',)
+        }),
+    )
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('service_slug', 'service_name', 'service_price')

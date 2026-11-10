@@ -92,6 +92,8 @@ class Product(models.Model):
     category = models.CharField(max_length=80)
     description = models.TextField()
     price = models.DecimalField(max_digits=7, decimal_places=2)
+    usage_instructions = models.TextField(blank=True)
+    benefits = models.TextField(blank=True)
     image_path = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)

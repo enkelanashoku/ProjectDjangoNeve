@@ -55,10 +55,10 @@
                         {% endif %}
 
                         <a
-                            class="service-link"
-                            href="{% url 'contact' %}?service={{ service.service_name|urlencode }}"
+                            class="service-link btn-main"
+                            href="{% url 'appointment' %}#booking-form"
                         >
-                            Enquire about this service
+                            Enquire About This Service
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
 
@@ -455,7 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Send the user to the booking form
     bookSelection.addEventListener("click", function () {
-        window.location.href = "{% url 'appointment' %}";
+        window.location.href = "{% url 'appointment' %}#booking-form";
     });
 
 

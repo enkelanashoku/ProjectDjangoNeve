@@ -1,0 +1,121 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<main class="product-detail-page">
+    <section class="product-detail-section" aria-labelledby="product-title">
+        <div class="container">
+            <nav class="product-detail-breadcrumb" aria-label="Breadcrumb">
+                <a href="{% url 'products' %}">Beauty Essentials</a>
+            </nav>
+
+            <div class="row align-items-start g-4 g-lg-5 product-detail-layout">
+                <div class="col-lg-6">
+                    <figure class="product-detail-image">
+                        {% if product.image_path %}
+                        <img src="{% static product.image_path %}" alt="{{ product.product_name }}">
+                        {% else %}
+                        <div class="product-detail-image-placeholder" role="img" aria-label="No product image available">
+                            <span>NÉVE</span>
+                        </div>
+                        {% endif %}
+                    </figure>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="product-detail-content">
+                        <p class="product-detail-category">{{ product.category }}</p>
+                        <h1 class="product-detail-title" id="product-title">{{ product.product_name }}</h1>
+
+                        <div class="product-detail-price-row">
+                            <span class="product-detail-price-label">Price</span>
+                            <p class="product-detail-price">€{{ product.price }}</p>
+                        </div>
+
+                        {% if product.description %}
+                        <section class="product-detail-info product-detail-description-block" aria-label="About this product">
+                            <p>{{ product.description }}</p>
+                        </section>
+                        {% endif %}
+
+                        {% if benefit_points %}
+                        <div class="product-detail-info-grid">
+                            <section class="product-detail-info product-detail-benefits" aria-labelledby="product-benefits-title">
+                                <h2 id="product-benefits-title">Why you’ll love it</h2>
+                                <ul class="product-benefit-list">
+                                    {% for item in benefit_points %}
+                                    <li>
+                                        <span class="product-benefit-icon" aria-hidden="true"><i class="fa-solid {{ item.0 }}"></i></span>
+                                        <span><strong>{{ item.1 }}</strong><small>{{ item.2 }}</small></span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </section>
+                            {% if how_to_use %}
+                            <section class="product-detail-info product-detail-usage" aria-labelledby="product-usage-title">
+                                <h2>Key Ingredients</h2>
+                                <p>{{ key_ingredients }}</p>
+                                <h2 id="product-usage-title"><i class="fa-solid fa-hand-sparkles" aria-hidden="true"></i> How to use</h2>
+                                <p>{{ how_to_use }}</p>
+                            </section>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        <section class="product-detail-editorial product-detail-audience" aria-labelledby="product-audience-title">
+                            <h2 id="product-audience-title"><i class="fa-solid fa-heart" aria-hidden="true"></i> Who is it for?</h2>
+                            <p>{{ who_for }}</p>
+                        </section>
+
+                        <section class="product-detail-editorial" aria-labelledby="product-extra-title">
+                            <h2 id="product-extra-title">A little extra touch</h2>
+                            <p>{{ extra_touch }}</p>
+                        </section>
+
+                        <aside class="product-detail-inquiry-note" aria-labelledby="product-inquiry-title">
+                            <h2 id="product-inquiry-title">Interested in this product?</h2>
+                            <p>For product inquiries and orders, please contact us using the details in our Contact section, or feel free to ask our team during your next visit to the studio.</p>
+                        </aside>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if related_products %}
+    <section class="complete-ritual-section" aria-labelledby="complete-ritual-title">
+        <div class="container">
+            <div class="complete-ritual-heading">
+                <p class="section-label">THE NÉVE EDIT</p>
+                <h2 id="complete-ritual-title">Complete your ritual</h2>
+                <p>Discover a few more thoughtful additions, chosen to complement your routine.</p>
+            </div>
+            <div class="row g-4">
+                {% for related in related_products %}
+                <div class="col-sm-6 col-lg-4">
+                    <article class="ritual-product-card">
+                        <a class="ritual-product-image" href="{% url 'product_detail' related.product_slug %}" aria-label="View {{ related.product_name }}">
+                            {% if related.image_path %}
+                            <img src="{% static related.image_path %}" alt="{{ related.product_name }}" loading="lazy">
+                            {% else %}
+                            <span class="ritual-product-placeholder" aria-hidden="true">NÉVE</span>
+                            {% endif %}
+                        </a>
+                        <div class="ritual-product-info">
+                            <p class="product-category">{{ related.category }}</p>
+                            <div class="ritual-product-title-row">
+                                <h3><a href="{% url 'product_detail' related.product_slug %}">{{ related.product_name }}</a></h3>
+                                <span class="product-price">€{{ related.price }}</span>
+                            </div>
+                            <a class="ritual-product-link" href="{% url 'product_detail' related.product_slug %}">Discover <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+</main>
+{% endblock %}
