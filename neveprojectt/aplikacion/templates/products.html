@@ -18,7 +18,7 @@
                 <article class="catalog-product h-100">
                     <div class="catalog-product-image">
                         {% if product.image_path %}
-                        <img src="{% static product.image_path %}" alt="{{ product.product_name }}" loading="lazy">
+                        <img src="{% get_media_prefix %}product/{% if product.product_slug == 'calming-body-balm' %}p1{% elif product.product_slug == 'body-glow-lotion' or product.product_slug == 'daily-glow-serum' or product.product_slug == 'daily-shield-spf' or product.product_slug == 'hydration-cloud-cream' %}p2{% elif product.product_slug == 'brow-defining-pencil' or product.product_slug == 'brow-shaping-gel' %}p3{% elif product.product_slug == 'lash-brush-set' %}p4{% elif product.product_slug == 'brow-conditioning-oil' %}p5{% elif product.product_slug == 'lash-cleanser' or product.product_slug == 'rosewater-toner' or product.product_slug == 'velvet-cleanser' %}p6{% elif product.product_slug == 'lash-conditioning-serum' %}p7{% elif product.product_slug == 'daily-volume-shampoo' %}p8{% elif product.product_slug == 'heat-protect-spray' %}p9{% elif product.product_slug == 'scalp-care-serum' %}p10{% elif product.product_slug == 'curl-defining-cream' %}p11{% elif product.product_slug == 'repair-hair-mask' %}p12{% elif product.product_slug == 'silk-hair-oil' %}p13{% elif product.product_slug == 'overnight-repair-mask' %}p14{% endif %}.jpeg" alt="{{ product.product_name }}" loading="lazy">
                         {% endif %}
                     </div>
                     <div class="catalog-product-info">
